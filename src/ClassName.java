@@ -23,6 +23,7 @@ public class ClassName {
 	
 	public void add5ToIntField() {
 		myIntField = myIntField +5;
+		int localVariable = 7;
 		print();
 	}
 	
