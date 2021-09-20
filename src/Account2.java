@@ -75,11 +75,7 @@ public class Account2
      * @param withAmount the amount to withdraw
      */
     public void withdraw(int withAmount) {
-    	if( withAmount > balance) {
-    		System.out.println("insufficient funds");
-    	}else {
-    		balance = balance - withAmount;
-    	}
+         balance = balance - withAmount;
     } 
 
     /** 
@@ -110,6 +106,7 @@ public class Account2
 	public static void main(String[] args) {
 		Account2 savingsAccount = new Account2(56684,3);
 
+		int x = 3;
 		savingsAccount.deposit(5623);
 		savingsAccount.print();
 	}    
