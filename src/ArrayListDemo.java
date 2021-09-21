@@ -63,5 +63,9 @@ public class ArrayListDemo
     	ArrayListDemo alDemo = new ArrayListDemo();
     	
     	alDemo.arrayListOperations();
+    	
+    	//ArrayList<int> intArrayList;
+    	ArrayList<Integer> integerArrayList;
+    	
     }
 }
