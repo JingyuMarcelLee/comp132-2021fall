@@ -357,10 +357,10 @@ public class VideoStore
     public VideoStore getAllDVDsWithRating(String rating) {
         String storeName = rating + " RatedDVDs";
         VideoStore withRating = new VideoStore(storeName);
-        for (int d=0; d < dvdList.size(); d++) {
-            DVD dvd = dvdList.get(d);
+        for (DVD dvd : dvdList) {
+            
             String curRating = dvd.getRating();
-            if (curRating == rating) {
+            if (curRating.equals( rating)) {
                 withRating.addDVD(dvd);
             }
         }

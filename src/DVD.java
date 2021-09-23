@@ -135,4 +135,19 @@ public class DVD
 
         return str;
     }
+    
+    
+    public boolean equals( DVD other) {
+    	if( !this.title.equals(other.title)) {
+    		return false;
+    	}else if( ! this.mpaaRating.equals(other.mpaaRating)) {
+    		return false;
+    	}else if( this.rentalLength != other.rentalLength) {
+    		return false;
+    	}else if( this.nightsRented != other.nightsRented) {
+    		return false;
+    	}else {
+    		return true;
+    	}
+    }
 }
