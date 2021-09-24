@@ -12,6 +12,9 @@ public class Candidate {
 	private String name;
 	private String party;
 	private int votes;
+	
+	public static final String DEMOCRAT = "Democrat";
+	public static final String REPUBLICAN = "Republican";
 
 	/**
 	 * Construct a new candidate with the specified name, party and number of
@@ -89,7 +92,7 @@ public class Candidate {
 	
 	public static void main(String[] args) {
 		
-		Candidate c1 = new Candidate ("Bob", "Democrat", 10);
+		Candidate c1 = new Candidate ("Bob", Candidate.DEMOCRAT, 10);
 		
 		System.out.println("Candidate Bob has a vote count of " + c1.getVotes());
 		
