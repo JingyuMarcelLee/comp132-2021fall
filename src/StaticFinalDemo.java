@@ -1,8 +1,11 @@
 
-public static class  StaticFinalDemo {
+public class  StaticFinalDemo {
 	
 	int notStaticInt;
 	static int staticInt;
+	
+	static final int TEN = 10;
+	static final String COLLEGE_NAME = "Dickinson College";
 	
 	public StaticFinalDemo() {
 		notStaticInt = 5;
@@ -39,6 +42,12 @@ public static class  StaticFinalDemo {
 		
 		System.out.println( Math.abs(-3));
 		System.out.println( Math.min(4,10));
+		
+		System.out.println(StaticFinalDemo.TEN);
+		
+		//cant asign to final
+		//StaticFinalDemo.TEN = 4;
+		
 		
 	}
 
