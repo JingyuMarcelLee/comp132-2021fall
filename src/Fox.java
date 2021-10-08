@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Fox implements MakesSound, Swims{
 
@@ -29,7 +30,7 @@ public class Fox implements MakesSound, Swims{
 		ArrayList<MakesSound> animals = new ArrayList<>();
 		
 		animals.add( new Fox());
-		animals.add(new Squirrel());
+		animals.add(new Squirrel(30));
 		
 		for( MakesSound m : animals) {
 			System.out.println(m.getSound());
@@ -42,6 +43,13 @@ public class Fox implements MakesSound, Swims{
 			}
 			
 		}
+		
+		Squirrel ska = new Squirrel(39);
+		
+		isSoundTooLong(f);
+		
+		isSoundTooLong(animal);
+		isSoundTooLong(ska); 
 		
 		
 	}
@@ -56,6 +64,39 @@ public class Fox implements MakesSound, Swims{
 	}
 	
 	
+	static boolean isSoundTooLong( MakesSound m) {
+		//sound is too long if its > 10 characters
+		
+		return m.getSound().length() > 10;
+		
+	}
+	
+	static void printSound(MakesSound m) {
+		
+		if( m.getSound().length()> 1) {
+			System.out.println(m.xYearOldImitiationSound(4));
+		}
+	}
+	
+	static void makeSoundTest() {
+		
+		Random rnd = new Random();
+		MakesSound ms;
+		
+		if( rnd.nextBoolean()) {
+			ms = new Squirrel(54);
+		}else {
+			ms = new Fox();
+		}
+		
+		System.out.println(ms.getSound());
+	}
+
+	@Override
+	public int compareTo(MakesSound o) {
+		
+		return this.getSound().compareTo(o.getSound());
+	}
 	
 	
 

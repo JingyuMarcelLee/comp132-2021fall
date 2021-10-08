@@ -1,5 +1,5 @@
 
-public interface MakesSound {
+public interface MakesSound extends Comparable<MakesSound> {
 
 	public String getSound();
 	
