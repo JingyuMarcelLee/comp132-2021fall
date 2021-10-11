@@ -43,6 +43,9 @@ public class ClassAndGPA implements Comparable<ClassAndGPA>{
 		System.out.println(list);
 		Collections.sort(list);
 		System.out.println(list);
+		ClassAndGPAByGPAComparator comp = new ClassAndGPAByGPAComparator();
+		Collections.sort( list, comp);
+		System.out.println(list);
 	}
 
 }
