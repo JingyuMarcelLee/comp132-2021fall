@@ -81,6 +81,8 @@ public class HashMapDemo {
 		HashMap<Integer, ArrayList<String> > rowToStudents =
 				new HashMap<>();
 		
+		ArrayList<String[]> list = new ArrayList<>();
+		
 		
 		for(String name : studentToRow.keySet()) {
 			int row = studentToRow.get(name);
