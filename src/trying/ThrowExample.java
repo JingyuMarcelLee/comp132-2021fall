@@ -3,7 +3,7 @@ package trying;
 public class ThrowExample {
 
 	
-	public void bleh() throws Exception{
+	public void bleh() {
 		System.out.println();
 		Exception myExcept = new Exception();
 		throw myExcept;
