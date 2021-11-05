@@ -1,40 +1,134 @@
 package part3;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RecursionExamples {
 
-	
-	public int sillyFunc(int n) {
-		if( n ==0 ) {
+	public static int sillyFunc(int n) {
+		if (n == 0) {
 			return 0;
-		}else {
-			return 1+sillyFunc(n-1);
+		} else {
+			return 1 + sillyFunc(n - 1);
 		}
 	}
-	
-	public int fib( int n) {
-		if( n == 0) {
+
+	public static int fib(int n) {
+		if (n == 0) {
 			return 1;
-		}else if( n == 1) {
+		} else if (n == 1) {
 			return 1;
-		}else {
-			return fib(n-1) + fib(n-2);
+		} else {
+			return fib(n - 1) + fib(n - 2);
 		}
 	}
-	
-	public int addList(ArrayList<Integer> list) {
-		
+
+	public static int addList(ArrayList<Integer> list) {
+
 		return addListHelper(0, list);
 	}
-	
-	public int addListHelper(int index, ArrayList<Integer> list) {
-		if( index == list.size()) {
+
+	public static int addListHelper(int index, ArrayList<Integer> list) {
+		if (index == list.size()) {
 			return 0;
-		}else {
-			return list.get(index) + 
-					addListHelper(index+1, list);
+		} else {
+			return list.get(index) + addListHelper(index + 1, list);
 		}
-		
+
+	}
+
+	// move soure pile to dest pile
+	public static void move(ArrayList<ArrayList<Integer>> piles, int source, int dest, int num) {
+
+		ArrayList<Integer> curPile = piles.get(source);
+		ArrayList<Integer> destPile = piles.get(dest);
+		int otherIndex = 3 - source - dest;
+		// System.out.println(piles);
+		if (num == 1) {
+			int lastItem = curPile.remove(curPile.size() - 1);
+			destPile.add(lastItem);
+			System.out.println(piles);
+
+		} else {
+			move(piles, source, otherIndex, num - 1);
+			int curItem = curPile.remove(curPile.size() - 1);
+			destPile.add(curItem);
+			System.out.println(piles);
+
+			move(piles, otherIndex, dest, num - 1);
+		}
+
+	}
+
+	public static int coinRow(int curIndex, ArrayList<Integer> val) {
+
+		if (curIndex == 0) {
+			return val.get(0);
+		} else if (curIndex == 1) {
+			return Math.max(val.get(0), val.get(1));
+		}
+
+		int take = val.get(curIndex) + coinRow(curIndex - 2, val);
+		int leave = coinRow(curIndex - 1, val);
+		return Math.max(take, leave);
+
+	}
+
+	public static ArrayList<Integer> coinRowSol(int curIndex, ArrayList<Integer> val) {
+
+		if (curIndex == 0) {
+			ArrayList<Integer> result = new ArrayList<>();
+			result.add( val.get(0));
+			return result;
+		} else if (curIndex == 1) {
+			ArrayList<Integer> result = new ArrayList<>();
+			result.add(  Math.max(val.get(0), val.get(1)));
+			return result;
+		}
+
+		ArrayList<Integer> takeList = 
+				coinRowSol(curIndex - 2, val);
+		int take = val.get(curIndex);
+		for(int i : takeList) {
+			take+=i;
+		}
+		ArrayList<Integer> leaveList = 
+				coinRowSol(curIndex - 1, val);
+		int leave = 0;
+		for(int i : leaveList) {
+			leave+=i;
+		}
+		if( take > leave) {
+			takeList.add(val.get(curIndex));
+			return takeList;
+		}else {
+			return leaveList;
+		}
+
+	}
+	
+	public static ArrayList<Integer> coinRowSol( ArrayList<Integer> val){
+		return coinRowSol(val.size()-1, val);
+	}
+
+	public static void main(String[] args) {
+		/*
+		 * ArrayList< ArrayList<Integer> > piles = new ArrayList<>();
+		 * 
+		 * piles.add(new ArrayList<>()); piles.add(new ArrayList<>()); piles.add(new
+		 * ArrayList<>());
+		 * 
+		 * for(int i = 10; i >=1; --i) { piles.get(0).add(i);
+		 * 
+		 * } move(piles, 0, 2, 10);
+		 */
+		Random rnd = new Random();
+		ArrayList<Integer> vals = new ArrayList<>();
+		for (int i = 0; i < 100; ++i) {
+			vals.add(rnd.nextInt(10));
+		}
+		ArrayList<Integer> result = coinRowSol( vals);
+		System.out.println(vals);
+		System.out.println(result);
 	}
 }
