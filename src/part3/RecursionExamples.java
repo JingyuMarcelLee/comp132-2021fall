@@ -110,6 +110,73 @@ public class RecursionExamples {
 	public static ArrayList<Integer> coinRowSol( ArrayList<Integer> val){
 		return coinRowSol(val.size()-1, val);
 	}
+	
+	
+	public static int pow( int x, int n) {
+		if( n == 0) {
+			return 1;
+		}
+		
+		int recCall = pow(x,n/2);
+		if( n %2 == 0) {
+			int result = recCall*recCall; 
+			return result;
+		}else {
+			int result = recCall*recCall*x;
+			return result;
+		}
+		
+		
+		
+	}
+	
+	
+	public static int countZs(String s) {
+		
+		return countZs(s, 0, s.length());
+		
+	}
+	
+	public static int countZs(String s, int start, int end) {
+		if( end-start == 1) {
+			if( s.charAt(start) == 'z') {
+				return 1;
+			}else {
+				return 0;
+			}
+		}
+		
+		int mid = (start+end)/2;
+		int firstHalf = countZs(s, start, mid);
+		int secondHalf =countZs(s, mid, end); 
+		return firstHalf+secondHalf;
+		
+	}
+	
+	public static ArrayList<String> permute(String s){
+		ArrayList<String> results = new ArrayList<>();
+		
+		if(s.length() == 1) {
+			results.add( s);
+			return results;
+		}
+		
+		for(int i = 0; i < s.length(); ++i) {
+			String newString = s.substring(0,i) +  
+					s.substring(i+1, s.length());
+			System.out.println(newString);
+			ArrayList<String> recurResult = 
+					permute(newString); 
+			for(String r : recurResult) {
+				results.add(s.charAt(i) + r); 
+			}
+		}
+		
+		return results;
+		
+		
+		
+	}
 
 	public static void main(String[] args) {
 		/*
@@ -127,8 +194,10 @@ public class RecursionExamples {
 		for (int i = 0; i < 100; ++i) {
 			vals.add(rnd.nextInt(10));
 		}
-		ArrayList<Integer> result = coinRowSol( vals);
-		System.out.println(vals);
-		System.out.println(result);
+		//ArrayList<Integer> result = coinRowSol( vals);
+		//System.out.println(vals);
+		//System.out.println(result);
+		
+		System.out.println(permute("ABCDEF"));
 	}
 }
