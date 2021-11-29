@@ -53,7 +53,7 @@ public class Pair implements Comparable<Pair> {
 	
 	public static void main(String[] args) {
 		
-		ArrayList< Pair> pairs = new ArrayList<>();
+		ArrayList< Pair> pairs = new ArrayList<Pair>();
 		
 		Random rnd = new Random();
 		int size = 10;
