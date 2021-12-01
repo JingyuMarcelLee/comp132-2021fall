@@ -33,7 +33,21 @@ public class ArrayList132 implements ListADT {
 
 	@Override
 	public void insert(int i, Object item) {
-		// TODO Auto-generated method stub
+		
+		Object[] newArr = new Object[ size()+1];
+		
+		for(int ii = 0; ii < size(); ++ii) {
+			// if its before the insertion point
+			// items are at the same index
+			// if its after, the index is 1 more
+			if( ii < i) {
+				newArr[ii] = arr[ii];
+			}else{
+				newArr[ii+1] = arr[ii];
+			}
+		}
+		newArr[i] = item;
+		arr= newArr;
 
 	}
 
@@ -57,7 +71,8 @@ public class ArrayList132 implements ListADT {
 
 	@Override
 	public void set(int i, Object item) {
-		// TODO Auto-generated method stub
+		
+		arr[i] = item;
 
 	}
 
