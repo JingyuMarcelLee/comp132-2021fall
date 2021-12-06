@@ -15,7 +15,9 @@ public class ArrayList132Part2 implements ListADT{
 		
 		
 		if( size == arr.length) {
-			Object[] newArr = new Object[size+1];
+			// instead of adding one item, we will double the arr
+			// this will let us do fewer copies
+			Object[] newArr = new Object[size*2];
 			for(int i = 0; i < size; ++i) {
 				newArr[i] = arr[i];
 			}
